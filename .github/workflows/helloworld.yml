@@ -6,14 +6,19 @@ on:
       - main
 
 jobs:
-  echo_hello:
+  setup_and_run:
     runs-on: ubuntu-latest
-    steps: 
-      - name: "挨拶"
-        run: echo "Nice to meet you!!"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4  #👈リポジトリのソースを持ってくる
 
-      - name: "名前を言う"
-        run: echo "My Name is Taro!!"
+      - name: Set up Node.js
+        uses: actions/setup-node@v3  #👈Node.jsを使えるようにする
+        with:
+          node-version: '24'
 
-      - name: "趣味を話す"
-        run: echo "I love programming!!"
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run script
+        run: node index.js
