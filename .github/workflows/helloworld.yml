@@ -19,7 +19,7 @@ jobs:
           java-version: '21'
 
       - name: Compile
-        run: javac src/main.java
+        run: javac src/Main.java
 
       - name: Run
         run: java -cp src Main
