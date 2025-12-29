@@ -12,13 +12,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4  #👈リポジトリのソースを持ってくる
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3  #👈Node.jsを使えるようにする
+      - name: Set up Java 21
+        uses: actions/setup-java@v5
         with:
-          node-version: '24'
+          distribution: 'temurin'
+          java-version: '21'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Compile
+        run: javac src/main.java
 
-      - name: Run script
-        run: node index.js
+      - name: Run
+        run: java -cp src Main
